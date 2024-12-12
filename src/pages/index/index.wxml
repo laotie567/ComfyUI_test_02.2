@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="header">
+    <text class="title">AI绘画助手</text>
+    <view class="user-info" wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">登录</button>
+    </view>
+    <view class="user-info" wx:else>
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <text class="nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+
+  <view class="function-list">
+    <view class="function-item">
+      <text class="function-title">人物换脸</text>
+      <button class="upload-btn" bindtap="uploadImage">上传图片</button>
+    </view>
+    
+    <view class="function-item">
+      <text class="function-title">背景更换</text>
+      <button class="upload-btn" bindtap="uploadImage">上传图片</button>
+    </view>
+    
+    <view class="function-item">
+      <text class="function-title">风格转绘</text>
+      <button class="upload-btn" bindtap="uploadImage">上传图片</button>
+    </view>
+  </view>
+</view> 

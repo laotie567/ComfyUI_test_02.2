@@ -1,0 +1,28 @@
+<!--pages/user/index.wxml-->
+<view class="container">
+  <view class="user-info">
+    <block wx:if="{{hasUserInfo}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <text class="nickname">{{userInfo.nickName}}</text>
+    </block>
+    <block wx:else>
+      <view class="not-login">
+        <text>请先登录</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="user-content">
+    <view class="menu-list">
+      <view class="menu-item">
+        <text>我的作品</text>
+      </view>
+      <view class="menu-item">
+        <text>使用记录</text>
+      </view>
+      <view class="menu-item">
+        <text>关于我们</text>
+      </view>
+    </view>
+  </view>
+</view>
