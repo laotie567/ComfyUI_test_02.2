@@ -1,0 +1,117 @@
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="header">
+    <view class="sort-button" bindtap="showSortOptions">
+      <image class="icon" src="/assets/images/sort.png" />
+      <text>{{ sortTypes[currentSort].text }}</text>
+    </view>
+    <view class="category-button" bindtap="showCategories">
+      <image class="icon" src="/assets/images/category.png" />
+      <text>{{ currentCategory ? currentCategory : '全部' }}</text>
+    </view>
+  </view>
+
+  <!-- 分类管理 -->
+  <view class="category-manager" wx:if="{{showCategoryManager}}">
+    <view class="category-list">
+      <view class="category-item {{ !currentCategory ? 'active' : '' }}" 
+            bindtap="selectCategory" 
+            data-category="">全部</view>
+      <view class="category-item {{ item === currentCategory ? 'active' : '' }}" 
+            wx:for="{{ categories }}" 
+            wx:key="*this"
+            bindtap="selectCategory" 
+            data-category="{{ item }}">
+        {{ item }}
+        <view class="delete-category" catchtap="deleteCategory" data-category="{{ item }}">×</view>
+      </view>
+    </view>
+    <view class="add-category">
+      <input class="category-input" 
+             placeholder="新建分类" 
+             value="{{ newCategory }}"
+             bindinput="onCategoryInput" />
+      <button class="add-button" bindtap="addCategory">添加</button>
+    </view>
+  </view>
+
+  <!-- 排序选项 -->
+  <view class="sort-options {{ showSortOptions ? 'show' : '' }}">
+    <view class="sort-item {{ currentSort === index ? 'active' : '' }}"
+          wx:for="{{ sortTypes }}" 
+          wx:key="value"
+          bindtap="selectSort" 
+          data-index="{{ index }}">
+      {{ item.text }}
+      <image class="check-icon" 
+             src="/assets/images/check.png" 
+             wx:if="{{ currentSort === index }}" />
+    </view>
+  </view>
+
+  <!-- 收藏列表 -->
+  <scroll-view class="favorite-list" 
+               scroll-y 
+               enable-back-to-top
+               bindscrolltolower="loadMore">
+    <view class="favorite-item" 
+          wx:for="{{ favorites }}" 
+          wx:key="id">
+      <image class="favorite-image" 
+             src="{{ item.url }}" 
+             mode="aspectFill"
+             bindtap="previewImage"
+             data-url="{{ item.url }}" />
+      <view class="favorite-info">
+        <text class="prompt">{{ item.prompt }}</text>
+        <text class="params">{{ item.params.width }}x{{ item.params.height }} 步数:{{ item.params.steps }}</text>
+        <text class="time">{{ item.createTime }}</text>
+      </view>
+      <view class="favorite-actions">
+        <view class="action-button edit" bindtap="editCategory" data-id="{{ item.id }}">
+          <image class="action-icon" src="/assets/images/edit.png" />
+        </view>
+        <view class="action-button delete" bindtap="removeFavorite" data-id="{{ item.id }}">
+          <image class="action-icon" src="/assets/images/delete.png" />
+        </view>
+      </view>
+      <view class="category-tag" wx:if="{{ item.category }}">
+        {{ item.category }}
+      </view>
+    </view>
+    <!-- 加载更多 -->
+    <view class="loading-more" wx:if="{{ hasMore }}">
+      <text>加载中...</text>
+    </view>
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{ favorites.length === 0 }}">
+      <image class="empty-icon" src="/assets/images/empty.png" />
+      <text>暂无收藏</text>
+    </view>
+  </scroll-view>
+
+  <!-- 编辑分类弹窗 -->
+  <view class="edit-category-modal" wx:if="{{ showEditCategory }}">
+    <view class="modal-content">
+      <view class="modal-title">选择分类</view>
+      <view class="category-options">
+        <view class="category-option {{ !selectedCategory ? 'active' : '' }}"
+              bindtap="selectEditCategory"
+              data-category="">
+          无分类
+        </view>
+        <view class="category-option {{ item === selectedCategory ? 'active' : '' }}"
+              wx:for="{{ categories }}"
+              wx:key="*this"
+              bindtap="selectEditCategory"
+              data-category="{{ item }}">
+          {{ item }}
+        </view>
+      </view>
+      <view class="modal-actions">
+        <button class="cancel-button" bindtap="cancelEdit">取消</button>
+        <button class="confirm-button" bindtap="confirmEdit">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

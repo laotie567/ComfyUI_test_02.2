@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./typings"],
+    "lib": ["ES2017"],
+    "types": ["wechat-miniprogram"]
+  },
+  "include": ["miniprogram/**/*"],
+  "exclude": ["node_modules"]
+}

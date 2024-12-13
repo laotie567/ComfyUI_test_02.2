@@ -1,62 +1,201 @@
-/**index.wxss**/
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
-}
-
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
-  width: 80%;
-}
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-
-.avatar-wrapper {
-  padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
-
-.nickname-wrapper {
-  display: flex;
-  width: 100%;
-  padding: 16px;
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding-bottom: 120rpx;
   box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
 }
 
-.nickname-label {
-  width: 105px;
+.header {
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 20rpx;
 }
 
-.nickname-input {
-  flex: 1;
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.main-content {
+  padding: 0 30rpx;
+}
+
+/* 输入区域 */
+.input-section {
+  padding: 30rpx;
+}
+
+.input-group {
+  margin-bottom: 30rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.input-area {
+  width: 100%;
+  min-height: 160rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+  box-sizing: border-box;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 参数设置 */
+.params-section {
+  padding: 0 30rpx 30rpx;
+}
+
+.param-group {
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.param-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.param-label {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.param-value {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.size-picker {
+  margin-top: 16rpx;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #333333;
+  text-align: center;
+}
+
+/* 预览区域 */
+.preview-section {
+  padding: 0 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.preview-image {
+  width: 100%;
+  height: 690rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.empty-preview {
+  width: 100%;
+  height: 690rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.action-bar {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.action-btn {
+  min-width: 240rpx;
+  height: 80rpx;
+  line-height: 76rpx;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  margin: 0;
+  background-color: transparent;
+}
+
+.action-btn.save {
+  color: #1296db;
+  border: 2rpx solid #1296db;
+}
+
+.action-btn[disabled] {
+  color: #cccccc !important;
+  border-color: #cccccc !important;
+  background-color: transparent !important;
+}
+
+/* 底部按钮 */
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.generate-btn {
+  width: 100%;
+  height: 88rpx;
+  background-color: #1296db;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 44rpx;
+  border: none;
+  margin: 0;
+}
+
+.generate-btn.loading {
+  opacity: 0.8;
+}
+
+.btn-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+  border: 4rpx solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.generate-btn[disabled] {
+  background-color: #cccccc !important;
+  color: #ffffff !important;
 }

@@ -1,14 +1,41 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/gallery/gallery",
+    "pages/settings/settings",
     "pages/logs/logs"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "AI绘画助手",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "绘画",
+        "iconPath": "assets/images/draw.png",
+        "selectedIconPath": "assets/images/draw_selected.png"
+      },
+      {
+        "pagePath": "pages/gallery/gallery",
+        "text": "作品",
+        "iconPath": "assets/images/gallery.png",
+        "selectedIconPath": "assets/images/gallery_selected.png"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "设置",
+        "iconPath": "assets/images/settings.png",
+        "selectedIconPath": "assets/images/settings_selected.png"
+      }
+    ]
   },
   "style": "v2",
-  "componentFramework": "glass-easel",
-  "lazyCodeLoading": "requiredComponents"
+  "sitemapLocation": "sitemap.json"
 }

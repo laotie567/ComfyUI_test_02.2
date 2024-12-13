@@ -1,0 +1,415 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding-bottom: 40rpx;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.gallery-list {
+  padding: 0 30rpx;
+}
+
+.gallery-item {
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+}
+
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.image-wrapper:active .image-overlay {
+  opacity: 1;
+}
+
+.overlay-text {
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.item-info {
+  padding: 20rpx;
+}
+
+.prompt-section {
+  margin-bottom: 20rpx;
+}
+
+.prompt-label {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.prompt-text {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.info-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.action-btn {
+  min-width: 120rpx;
+  height: 56rpx;
+  line-height: 52rpx;
+  font-size: 24rpx;
+  border-radius: 28rpx;
+  padding: 0 30rpx;
+  margin: 0;
+  background-color: transparent;
+}
+
+.action-btn.share {
+  color: #1296db;
+  border: 2rpx solid #1296db;
+}
+
+.action-btn.delete {
+  color: #ff4444;
+  border: 2rpx solid #ff4444;
+}
+
+.empty-state {
+  padding: 120rpx 30rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 40rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.loading-state {
+  padding: 60rpx;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 auto 20rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #1296db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 分享菜单样式 */
+.share-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.share-menu.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.share-panel {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 30rpx;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.share-menu.show .share-panel {
+  transform: translateY(0);
+}
+
+.share-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.share-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #999999;
+  padding: 10rpx;
+}
+
+.share-options {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+
+.share-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.option-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.option-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 海报模板选择 */
+.poster-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.poster-menu.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.poster-menu-content {
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 40rpx;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.poster-menu.show .poster-menu-content {
+  transform: translateY(0);
+}
+
+.poster-menu-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40rpx;
+  color: #333;
+}
+
+.poster-menu-options {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+
+.poster-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200rpx;
+}
+
+.poster-preview {
+  width: 180rpx;
+  height: 320rpx;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.poster-menu-item text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.poster-menu-close {
+  margin-top: 40rpx;
+  text-align: center;
+  padding: 20rpx;
+  font-size: 32rpx;
+  color: #999;
+  border-top: 1rpx solid #eee;
+}
+
+/* 动画效果 */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.poster-menu.show {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.poster-menu.show .poster-menu-content {
+  animation: slideUp 0.3s ease forwards;
+}
+
+/* 收藏按钮样式 */
+.gallery-item-actions {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  display: flex;
+  gap: 20rpx;
+  z-index: 10;
+}
+
+.action-button {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.action-button.favorite {
+  transform-origin: center;
+}
+
+.action-button.favorite.active {
+  animation: favorite-pop 0.3s ease;
+}
+
+.action-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.favorite .action-icon {
+  color: #ff4d4f;
+}
+
+.favorite.active .action-icon {
+  animation: favorite-bounce 0.3s ease;
+}
+
+/* 收藏动画 */
+@keyframes favorite-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes favorite-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

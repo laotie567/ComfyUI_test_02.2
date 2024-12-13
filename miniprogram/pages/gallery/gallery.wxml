@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="header">
+    <text class="title">我的作品</text>
+  </view>
+
+  <view class="gallery-list" wx:if="{{!isLoading && images.length > 0}}">
+    <view class="gallery-item" wx:for="{{images}}" wx:key="id">
+      <image class="gallery-image" src="{{item.url}}" mode="aspectFill" bindtap="previewImage" data-index="{{index}}" />
+      <view class="gallery-item-actions">
+        <view class="action-button favorite {{item.isFavorite ? 'active' : ''}}" 
+              catchtap="toggleFavorite" 
+              data-index="{{index}}">
+          <image class="action-icon" 
+                 src="{{item.isFavorite ? '/assets/images/favorite-filled.png' : '/assets/images/favorite.png' }}" />
+        </view>
+        <view class="action-button share" catchtap="showShareMenu" data-index="{{index}}">
+          <image class="action-icon" src="/assets/images/share.png" />
+        </view>
+        <view class="action-button delete" bindtap="onDeleteImage" data-id="{{item.id}}">删除</view>
+      </view>
+      <view class="gallery-item-info">
+        <text class="gallery-prompt">{{item.prompt}}</text>
+        <text class="gallery-params">{{item.params.width}}x{{item.params.height}} 步数:{{item.params.steps}}</text>
+        <text class="time">{{item.createTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{!isLoading && images.length === 0}}">
+    <image src="/assets/images/empty.svg" class="empty-icon"></image>
+    <text class="empty-text">还没有作品，快去创作吧！</text>
+  </view>
+
+  <view class="loading-state" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>

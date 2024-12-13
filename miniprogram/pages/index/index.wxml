@@ -1,27 +1,56 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
+<view class="container">
+  <view class="header">
+    <text class="title">AI绘画助手</text>
+    <view class="user-info" wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">登录</button>
     </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
+    <view class="user-info" wx:else>
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <text class="nickname">{{userInfo.nickName}}</text>
     </view>
   </view>
-</scroll-view>
+
+  <view class="main-content">
+    <!-- 提示词输入 -->
+    <view class="input-section">
+      <text class="section-title">提示词</text>
+      <textarea class="prompt-input" value="{{prompt}}" bindinput="onPromptInput" placeholder="描述你想要生成的图片..." maxlength="500" />
+      
+      <text class="section-title">反向提示词</text>
+      <textarea class="prompt-input negative" value="{{negativePrompt}}" bindinput="onNegativePromptInput" placeholder="描述你不想要在图片中出现的内容..." maxlength="500" />
+    </view>
+
+    <!-- 参数设置 -->
+    <view class="params-section">
+      <view class="param-item">
+        <text class="param-label">生成步数</text>
+        <slider min="20" max="50" value="{{steps}}" bindchange="onStepsChange" show-value block-size="20" activeColor="#1296db" />
+      </view>
+
+      <view class="param-item">
+        <text class="param-label">随机种子</text>
+        <view class="seed-container">
+          <input type="number" value="{{seed}}" disabled class="seed-input" />
+          <button class="seed-btn" bindtap="onRandomSeed">随机</button>
+        </view>
+      </view>
+
+      <view class="size-info">
+        <text class="size-text">图片尺寸: {{width}} x {{height}}</text>
+      </view>
+    </view>
+
+    <!-- 预览区域 -->
+    <view class="preview-section" wx:if="{{previewImage}}">
+      <image src="{{previewImage}}" mode="aspectFit" class="preview-image" bindtap="previewImage" />
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-section">
+      <button class="action-btn generate {{generating ? 'loading' : ''}}" bindtap="onGenerate" disabled="{{generating}}">
+        {{generating ? '生成中...' : '开始生成'}}
+      </button>
+      <button class="action-btn save" bindtap="onSaveToGallery" disabled="{{!previewImage || generating}}">保存到画廊</button>
+    </view>
+  </view>
+</view>

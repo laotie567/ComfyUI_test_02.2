@@ -1,0 +1,85 @@
+<view class="container">
+  <view class="header">
+    <text class="title">设置</text>
+  </view>
+
+  <view class="settings-content">
+    <!-- API设置 -->
+    <view class="settings-group">
+      <view class="group-title">API 设置</view>
+      
+      <view class="settings-item">
+        <text class="item-label">API 地址</text>
+        <input type="text" 
+          class="item-input"
+          value="{{apiUrl}}" 
+          bindinput="onApiUrlInput" 
+          placeholder="请输入API地址"
+          placeholder-class="input-placeholder"
+        />
+      </view>
+      
+      <view class="settings-item">
+        <text class="item-label">API 密钥</text>
+        <input type="text" 
+          class="item-input"
+          value="{{apiKey}}" 
+          bindinput="onApiKeyInput" 
+          placeholder="请输入API密钥"
+          placeholder-class="input-placeholder"
+        />
+      </view>
+    </view>
+
+    <!-- 默认参数设置 -->
+    <view class="settings-group">
+      <view class="group-title">默认参数</view>
+      
+      <view class="settings-item">
+        <text class="item-label">默认图片尺寸</text>
+        <picker 
+          bindchange="onDefaultSizeChange" 
+          value="{{defaultSizeIndex}}" 
+          range="{{sizeOptions}}"
+          class="item-picker"
+        >
+          <view class="picker-text">{{sizeOptions[defaultSizeIndex]}}</view>
+        </picker>
+      </view>
+
+      <view class="settings-item">
+        <text class="item-label">默认生成步数</text>
+        <view class="slider-container">
+          <slider 
+            min="20" 
+            max="50" 
+            value="{{defaultSteps}}" 
+            bindchange="onDefaultStepsChange" 
+            block-size="20" 
+            activeColor="#1296db"
+            show-value
+          />
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他设置 -->
+    <view class="settings-group">
+      <view class="group-title">其他设置</view>
+      
+      <view class="settings-item">
+        <text class="item-label">清理缓存</text>
+        <button class="clear-btn" bindtap="clearCache">清理</button>
+      </view>
+
+      <view class="settings-item version-item">
+        <text class="item-label">当前版本</text>
+        <text class="version-text">1.0.0</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <button class="save-btn" bindtap="saveSettings">保存设置</button>
+  </view>
+</view>

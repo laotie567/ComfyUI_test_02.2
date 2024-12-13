@@ -1,0 +1,135 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding-bottom: 120rpx;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.settings-content {
+  padding: 0 30rpx;
+}
+
+.settings-group {
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.group-title {
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 20rpx;
+  padding: 0 10rpx;
+}
+
+.settings-item {
+  padding: 20rpx 10rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.item-label {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.item-input {
+  width: 100%;
+  height: 80rpx;
+  background-color: #f8f8f8;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+
+.input-placeholder {
+  color: #999999;
+}
+
+.item-picker {
+  width: 100%;
+  height: 80rpx;
+  background-color: #f8f8f8;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.slider-container {
+  padding: 20rpx 0;
+}
+
+.clear-btn {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 56rpx;
+  background-color: #ffffff;
+  color: #ff4444;
+  font-size: 24rpx;
+  border: 2rpx solid #ff4444;
+  border-radius: 30rpx;
+  margin: 0;
+  padding: 0;
+}
+
+.version-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20rpx;
+}
+
+.version-text {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.save-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #1296db;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 44rpx;
+  border: none;
+  margin: 0;
+}

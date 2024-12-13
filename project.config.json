@@ -4,7 +4,7 @@
     "ignore": [],
     "include": []
   },
-  "miniprogramRoot": "src/",
+  "miniprogramRoot": "miniprogram/",
   "compileType": "miniprogram",
   "libVersion": "2.32.0",
   "projectname": "AI绘画助手",
